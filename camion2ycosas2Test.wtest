@@ -1,0 +1,51 @@
+import camion2.*
+import cosas2.*
+
+describe "Tests de camion 2"{
+  test "Peso del camion con 123 ladrillos"{
+    paqueteLadrillos.cargarLadrillos(123)
+    camion.cargarCosa(paqueteLadrillos)
+    assert.equals(1246, camion.peso())
+  }
+
+  test "Peso del camion al cargar 10 ladrillos y sufrir cambios"{
+    paqueteLadrillos.cargarLadrillos(10)
+    camion.cargarCosa(paqueteLadrillos)
+    assert.equals(1044, camion.peso())
+  }
+  
+}
+
+describe "Tests de cosas 2"{
+
+    test "Bultos que ocupan 278 ladrillos"{
+      paqueteLadrillos.cargarLadrillos(278)
+      assert.equals(2, paqueteLadrillos.bultosOcupados())
+    }
+
+    test "peso de 60kg arena a granel luego de sufrir cambios"{
+      arenaGranel.cambiarPeso(60)
+      arenaGranel.sufrirCambios()
+      assert.equals(50, arenaGranel.peso())
+    }
+
+    test "bultos que ocupa la bateria antiaerea luego de sufrir cambios"{
+      bateriaAntiaerea.sufrirCambios()
+      assert.equals(2, bateriaAntiaerea.bultosOcupados())
+    }
+
+ test "Bultos del contenedor portuario con 2 bumblebee, 700 ladrillos y residuos radioactivos"{
+    contenedorPortuario.cargarCosa(bumblebee)
+    contenedorPortuario.cargarCosa(bumblebee)
+    paqueteLadrillos.cargarLadrillos(700)
+    contenedorPortuario.cargarCosa(paqueteLadrillos)
+    contenedorPortuario.cargarCosa(residuosRadioactivos)
+    assert.equals(9, contenedorPortuario.bultosOcupados())
+  }
+
+    test "peso de 40kg de residuos radioactivos luego de sufrir cambios"{
+      residuosRadioactivos.cambiarPeso(40)
+      residuosRadioactivos.sufrirCambios()
+      assert.equals(55, residuosRadioactivos.peso())
+    } 
+}

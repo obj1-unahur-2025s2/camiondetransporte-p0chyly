@@ -6,7 +6,9 @@ object camion {
     method bultos() = carga.sum({unaCosa => unaCosa.bultosOcupados()})
 
     method cargarCosa(unaCosa){
-        carga.add(unaCosa)
+        unaCosa.sufrirCambios()
+        const cosaCambiada = unaCosa
+        carga.add(cosaCambiada)
     }
 
     method descargarCosa(unaCosa){

@@ -1,3 +1,4 @@
+import cosas2.*
 import camion.*
 import cosas.*
 
@@ -18,13 +19,31 @@ describe "Testeos de camion" {
   test "Peso del camion con 123 ladrillos"{
     paqueteLadrillos.cargarLadrillos(123)
     camion.cargarCosa(paqueteLadrillos)
-    assert.equals(1270, camion.peso())
+    assert.equals(1246, camion.peso())
   }
 
-  test "Peso del camion al cargar 10 ladrillos y sufrir cambios"{
-    paqueteLadrillos.cargarLadrillos(10)
-    camion.cargarCosa(paqueteLadrillos)
-    assert.equals(1044, camion.peso())
+  test "Verificar si hay una carga entre 200 y 400 kg si la carga es bumblebee, knightRider, y bateria antiaerea sin misiles"{
+    camion.cargarCosa(bumblebee)
+    camion.cargarCosa(knightRider)
+    camion.cargarCosa(bateriaAntiaerea)
+    assert.that(camion.tieneCargaConPesoEntre(200, 400))
   }
+
+  test "En el camion no hay algo con peso 900"{
+    residuosRadioactivos.cambiarPeso(899)
+    camion.cargarCosa(residuosRadioactivos)
+    assert.notThat(camion.hayAlgoDePeso(900))
+  }
+
+  test "El camion tiene un peso excedido con una carga de 2 bumblebees y embalaje de seguridad de 500 ladrillos "{
+    paqueteLadrillos.cargarLadrillos(500)
+    embalajeDeSeguridad.cosaEmbalada(paqueteLadrillos)
+    camion.cargarCosa(bumblebee)
+    camion.cargarCosa(bumblebee)
+    camion.cargarCosa(embalajeDeSeguridad)
+    assert.that(camion.estaExcedido())
+  }
+
+  
 
 }
