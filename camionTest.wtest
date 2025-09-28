@@ -18,11 +18,13 @@ describe "Testeos de camion" {
   test "Peso del camion con 123 ladrillos"{
     paqueteLadrillos.cargarLadrillos(123)
     camion.cargarCosa(paqueteLadrillos)
-    assert.equals(1246, camion.peso())
+    assert.equals(1270, camion.peso())
   }
 
-  test "Peso del camion con 123 ladrillos "{
-
+  test "Peso del camion al cargar 10 ladrillos y sufrir cambios"{
+    paqueteLadrillos.cargarLadrillos(10)
+    camion.cargarCosa(paqueteLadrillos)
+    assert.equals(1044, camion.peso())
   }
 
 }

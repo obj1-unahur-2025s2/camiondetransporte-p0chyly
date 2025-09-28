@@ -20,9 +20,18 @@ describe "Testeamos las cosas"{
   }
 
   test "Peso de residuos radioactivos de 30kg con embalaje"{
-    residuosRadioactivos.peso(30)
+    residuosRadioactivos.cambiarPeso(30)
     embalajeDeSeguridad.cosaEmbalada(residuosRadioactivos)
     assert.equals(30, embalajeDeSeguridad.peso())
+  }
+
+  test "Bultos del contenedor portuario con 2 bumblebee, 700 ladrillos y residuos radioactivos"{
+    contenedorPortuario.cargarCosa(bumblebee)
+    contenedorPortuario.cargarCosa(bumblebee)
+    paqueteLadrillos.cargarLadrillos(700)
+    contenedorPortuario.cargarCosa(paqueteLadrillos)
+    contenedorPortuario.cargarCosa(residuosRadioactivos)
+    assert.equals(9, contenedorPortuario.bultosOcupados())
   }
 
   }
